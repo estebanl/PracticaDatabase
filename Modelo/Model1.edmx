@@ -1,0 +1,517 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="pruebasModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="pruebasModelStoreContainer">
+    <EntitySet Name="catalogo" EntityType="pruebasModel.Store.catalogo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ciudad" EntityType="pruebasModel.Store.ciudad" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ciudadcliente" EntityType="pruebasModel.Store.ciudadcliente" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="cliente" EntityType="pruebasModel.Store.cliente" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="cliente_telefono" EntityType="pruebasModel.Store.cliente_telefono" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="pruebasModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="telefono" EntityType="pruebasModel.Store.telefono" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_cliente_catalogo" Association="pruebasModel.Store.FK_cliente_catalogo">
+      <End Role="catalogo" EntitySet="catalogo" />
+      <End Role="cliente" EntitySet="cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cliente_catalogo1" Association="pruebasModel.Store.FK_cliente_catalogo1">
+      <End Role="catalogo" EntitySet="catalogo" />
+      <End Role="cliente" EntitySet="cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cliente_catalogo2" Association="pruebasModel.Store.FK_cliente_catalogo2">
+      <End Role="catalogo" EntitySet="catalogo" />
+      <End Role="cliente" EntitySet="cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ciudadcliente_ciudad" Association="pruebasModel.Store.FK_ciudadcliente_ciudad">
+      <End Role="ciudad" EntitySet="ciudad" />
+      <End Role="ciudadcliente" EntitySet="ciudadcliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ciudadcliente_cliente" Association="pruebasModel.Store.FK_ciudadcliente_cliente">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="ciudadcliente" EntitySet="ciudadcliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cliente_telefono_cliente" Association="pruebasModel.Store.FK_cliente_telefono_cliente">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="cliente_telefono" EntitySet="cliente_telefono" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cliente_telefono_telefono" Association="pruebasModel.Store.FK_cliente_telefono_telefono">
+      <End Role="telefono" EntitySet="telefono" />
+      <End Role="cliente_telefono" EntitySet="cliente_telefono" />
+    </AssociationSet>
+    <AssociationSet Name="catalogocliente" Association="pruebasModel.Store.catalogocliente">
+      <End Role="catalogo" EntitySet="catalogo" />
+      <End Role="cliente" EntitySet="cliente" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="catalogo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="valor" Type="varchar" Nullable="true" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ciudad">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="ciudad1" Type="nchar" Nullable="true" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="ciudadcliente">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="idcliente" Type="int" Nullable="true" />
+    <Property Name="idciudad" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="nchar" Nullable="true" MaxLength="10" />
+    <Property Name="apellidos" Type="nchar" Nullable="true" MaxLength="10" />
+    <Property Name="direccion" Type="nchar" Nullable="true" MaxLength="10" />
+    <Property Name="id_catalogo" Type="int" Nullable="true" />
+    <Property Name="id_catalogo_dos" Type="int" Nullable="true" />
+    <Property Name="id_catalogo_tres" Type="int" Nullable="true" />
+    <Property Name="id_catalogo_cinco" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cliente_telefono">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_cliente" Type="int" Nullable="true" />
+    <Property Name="id_telefono" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" Nullable="true" />
+    <Property Name="definition" Type="varbinary(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="telefono">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="telefono1" Type="varchar" Nullable="true" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK_cliente_catalogo">
+    <End Role="catalogo" Type="pruebasModel.Store.catalogo" Multiplicity="0..1" />
+    <End Role="cliente" Type="pruebasModel.Store.cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="catalogo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cliente">
+        <PropertyRef Name="id_catalogo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cliente_catalogo1">
+    <End Role="catalogo" Type="pruebasModel.Store.catalogo" Multiplicity="0..1" />
+    <End Role="cliente" Type="pruebasModel.Store.cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="catalogo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cliente">
+        <PropertyRef Name="id_catalogo_dos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cliente_catalogo2">
+    <End Role="catalogo" Type="pruebasModel.Store.catalogo" Multiplicity="0..1" />
+    <End Role="cliente" Type="pruebasModel.Store.cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="catalogo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cliente">
+        <PropertyRef Name="id_catalogo_tres" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ciudadcliente_ciudad">
+    <End Role="ciudad" Type="pruebasModel.Store.ciudad" Multiplicity="0..1" />
+    <End Role="ciudadcliente" Type="pruebasModel.Store.ciudadcliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ciudad">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ciudadcliente">
+        <PropertyRef Name="idcliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ciudadcliente_cliente">
+    <End Role="cliente" Type="pruebasModel.Store.cliente" Multiplicity="0..1" />
+    <End Role="ciudadcliente" Type="pruebasModel.Store.ciudadcliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ciudadcliente">
+        <PropertyRef Name="idciudad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cliente_telefono_cliente">
+    <End Role="cliente" Type="pruebasModel.Store.cliente" Multiplicity="0..1" />
+    <End Role="cliente_telefono" Type="pruebasModel.Store.cliente_telefono" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cliente_telefono">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cliente_telefono_telefono">
+    <End Role="telefono" Type="pruebasModel.Store.telefono" Multiplicity="0..1" />
+    <End Role="cliente_telefono" Type="pruebasModel.Store.cliente_telefono" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="telefono">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cliente_telefono">
+        <PropertyRef Name="id_telefono" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="catalogocliente">
+    <End Role="catalogo" Type="pruebasModel.Store.catalogo" Multiplicity="1" />
+    <End Role="cliente" Type="pruebasModel.Store.cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="catalogo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cliente">
+        <PropertyRef Name="id_catalogo_cinco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="pruebasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="pruebasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="catalogo" EntityType="pruebasModel.catalogo" />
+          <EntitySet Name="ciudad" EntityType="pruebasModel.ciudad" />
+          <EntitySet Name="ciudadcliente" EntityType="pruebasModel.ciudadcliente" />
+          <EntitySet Name="cliente" EntityType="pruebasModel.cliente" />
+          <EntitySet Name="cliente_telefono" EntityType="pruebasModel.cliente_telefono" />
+          <EntitySet Name="sysdiagrams" EntityType="pruebasModel.sysdiagrams" />
+          <EntitySet Name="telefono" EntityType="pruebasModel.telefono" />
+          <AssociationSet Name="FK_cliente_catalogo" Association="pruebasModel.FK_cliente_catalogo">
+            <End Role="catalogo" EntitySet="catalogo" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cliente_catalogo1" Association="pruebasModel.FK_cliente_catalogo1">
+            <End Role="catalogo" EntitySet="catalogo" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cliente_catalogo2" Association="pruebasModel.FK_cliente_catalogo2">
+            <End Role="catalogo" EntitySet="catalogo" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ciudadcliente_ciudad" Association="pruebasModel.FK_ciudadcliente_ciudad">
+            <End Role="ciudad" EntitySet="ciudad" />
+            <End Role="ciudadcliente" EntitySet="ciudadcliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ciudadcliente_cliente" Association="pruebasModel.FK_ciudadcliente_cliente">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="ciudadcliente" EntitySet="ciudadcliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cliente_telefono_cliente" Association="pruebasModel.FK_cliente_telefono_cliente">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="cliente_telefono" EntitySet="cliente_telefono" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cliente_telefono_telefono" Association="pruebasModel.FK_cliente_telefono_telefono">
+            <End Role="telefono" EntitySet="telefono" />
+            <End Role="cliente_telefono" EntitySet="cliente_telefono" />
+          </AssociationSet>
+          <AssociationSet Name="catalogocliente" Association="pruebasModel.catalogocliente">
+            <End Role="catalogo" EntitySet="catalogo" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="catalogo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="valor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="cliente" Relationship="pruebasModel.FK_cliente_catalogo" FromRole="catalogo" ToRole="cliente" />
+          <NavigationProperty Name="cliente1" Relationship="pruebasModel.FK_cliente_catalogo1" FromRole="catalogo" ToRole="cliente" />
+          <NavigationProperty Name="cliente2" Relationship="pruebasModel.FK_cliente_catalogo2" FromRole="catalogo" ToRole="cliente" />
+          <NavigationProperty Name="cliente3" Relationship="pruebasModel.catalogocliente" FromRole="catalogo" ToRole="cliente" />
+        </EntityType>
+        <EntityType Name="ciudad">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="ciudad1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="ciudadcliente" Relationship="pruebasModel.FK_ciudadcliente_ciudad" FromRole="ciudad" ToRole="ciudadcliente" />
+        </EntityType>
+        <EntityType Name="ciudadcliente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="idcliente" Type="Int32" />
+          <Property Name="idciudad" Type="Int32" />
+          <NavigationProperty Name="ciudad" Relationship="pruebasModel.FK_ciudadcliente_ciudad" FromRole="ciudadcliente" ToRole="ciudad" />
+          <NavigationProperty Name="cliente" Relationship="pruebasModel.FK_ciudadcliente_cliente" FromRole="ciudadcliente" ToRole="cliente" />
+        </EntityType>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="apellidos" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="direccion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="id_catalogo" Type="Int32" />
+          <Property Name="id_catalogo_dos" Type="Int32" />
+          <Property Name="id_catalogo_tres" Type="Int32" />
+          <NavigationProperty Name="catalogo" Relationship="pruebasModel.FK_cliente_catalogo" FromRole="cliente" ToRole="catalogo" />
+          <NavigationProperty Name="catalogo1" Relationship="pruebasModel.FK_cliente_catalogo1" FromRole="cliente" ToRole="catalogo" />
+          <NavigationProperty Name="catalogo2" Relationship="pruebasModel.FK_cliente_catalogo2" FromRole="cliente" ToRole="catalogo" />
+          <NavigationProperty Name="ciudadcliente" Relationship="pruebasModel.FK_ciudadcliente_cliente" FromRole="cliente" ToRole="ciudadcliente" />
+          <NavigationProperty Name="cliente_telefono" Relationship="pruebasModel.FK_cliente_telefono_cliente" FromRole="cliente" ToRole="cliente_telefono" />
+          <NavigationProperty Name="catalogo3" Relationship="pruebasModel.catalogocliente" FromRole="cliente" ToRole="catalogo" />
+          <Property Name="id_catalogo_cinco" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cliente_telefono">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_cliente" Type="Int32" />
+          <Property Name="id_telefono" Type="Int32" />
+          <NavigationProperty Name="cliente" Relationship="pruebasModel.FK_cliente_telefono_cliente" FromRole="cliente_telefono" ToRole="cliente" />
+          <NavigationProperty Name="telefono" Relationship="pruebasModel.FK_cliente_telefono_telefono" FromRole="cliente_telefono" ToRole="telefono" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="telefono">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="telefono1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="cliente_telefono" Relationship="pruebasModel.FK_cliente_telefono_telefono" FromRole="telefono" ToRole="cliente_telefono" />
+        </EntityType>
+        <Association Name="FK_cliente_catalogo">
+          <End Type="pruebasModel.catalogo" Role="catalogo" Multiplicity="0..1" />
+          <End Type="pruebasModel.cliente" Role="cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catalogo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="id_catalogo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cliente_catalogo1">
+          <End Type="pruebasModel.catalogo" Role="catalogo" Multiplicity="0..1" />
+          <End Type="pruebasModel.cliente" Role="cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catalogo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="id_catalogo_dos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cliente_catalogo2">
+          <End Type="pruebasModel.catalogo" Role="catalogo" Multiplicity="0..1" />
+          <End Type="pruebasModel.cliente" Role="cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catalogo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="id_catalogo_tres" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ciudadcliente_ciudad">
+          <End Type="pruebasModel.ciudad" Role="ciudad" Multiplicity="0..1" />
+          <End Type="pruebasModel.ciudadcliente" Role="ciudadcliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudad">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ciudadcliente">
+              <PropertyRef Name="idcliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ciudadcliente_cliente">
+          <End Type="pruebasModel.cliente" Role="cliente" Multiplicity="0..1" />
+          <End Type="pruebasModel.ciudadcliente" Role="ciudadcliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ciudadcliente">
+              <PropertyRef Name="idciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cliente_telefono_cliente">
+          <End Type="pruebasModel.cliente" Role="cliente" Multiplicity="0..1" />
+          <End Type="pruebasModel.cliente_telefono" Role="cliente_telefono" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cliente_telefono">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cliente_telefono_telefono">
+          <End Type="pruebasModel.telefono" Role="telefono" Multiplicity="0..1" />
+          <End Type="pruebasModel.cliente_telefono" Role="cliente_telefono" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="telefono">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cliente_telefono">
+              <PropertyRef Name="id_telefono" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="catalogocliente">
+          <End Type="pruebasModel.catalogo" Role="catalogo" Multiplicity="1" />
+          <End Type="pruebasModel.cliente" Role="cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catalogo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="id_catalogo_cinco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="pruebasModelStoreContainer" CdmEntityContainer="pruebasEntities">
+    <EntitySetMapping Name="catalogo">
+      <EntityTypeMapping TypeName="IsTypeOf(pruebasModel.catalogo)">
+        <MappingFragment StoreEntitySet="catalogo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ciudad">
+      <EntityTypeMapping TypeName="IsTypeOf(pruebasModel.ciudad)">
+        <MappingFragment StoreEntitySet="ciudad">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ciudad1" ColumnName="ciudad1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ciudadcliente">
+      <EntityTypeMapping TypeName="IsTypeOf(pruebasModel.ciudadcliente)">
+        <MappingFragment StoreEntitySet="ciudadcliente">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idcliente" ColumnName="idcliente" />
+          <ScalarProperty Name="idciudad" ColumnName="idciudad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cliente">
+      <EntityTypeMapping TypeName="IsTypeOf(pruebasModel.cliente)">
+        <MappingFragment StoreEntitySet="cliente">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="id_catalogo" ColumnName="id_catalogo" />
+          <ScalarProperty Name="id_catalogo_dos" ColumnName="id_catalogo_dos" />
+          <ScalarProperty Name="id_catalogo_tres" ColumnName="id_catalogo_tres" />
+          <ScalarProperty Name="id_catalogo_cinco" ColumnName="id_catalogo_cinco" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cliente_telefono">
+      <EntityTypeMapping TypeName="IsTypeOf(pruebasModel.cliente_telefono)">
+        <MappingFragment StoreEntitySet="cliente_telefono">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="id_telefono" ColumnName="id_telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="IsTypeOf(pruebasModel.sysdiagrams)">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="telefono">
+      <EntityTypeMapping TypeName="IsTypeOf(pruebasModel.telefono)">
+        <MappingFragment StoreEntitySet="telefono">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="telefono1" ColumnName="telefono1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

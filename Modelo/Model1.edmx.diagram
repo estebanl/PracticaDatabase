@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0f0328a3085e48d0965341417d45ea34" Name="Diagram1">
+        <EntityTypeShape EntityType="pruebasModel.catalogo" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="pruebasModel.ciudad" Width="1.5" PointX="3" PointY="12" />
+        <EntityTypeShape EntityType="pruebasModel.ciudadcliente" Width="1.5" PointX="5.25" PointY="3.75" />
+        <EntityTypeShape EntityType="pruebasModel.cliente" Width="1.5" PointX="3" PointY="3" />
+        <EntityTypeShape EntityType="pruebasModel.cliente_telefono" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="pruebasModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="7.125" />
+        <EntityTypeShape EntityType="pruebasModel.telefono" Width="1.5" PointX="3" PointY="9.125" />
+        <AssociationConnector Association="pruebasModel.FK_cliente_catalogo" />
+        <AssociationConnector Association="pruebasModel.FK_cliente_catalogo1" />
+        <AssociationConnector Association="pruebasModel.FK_cliente_catalogo2" />
+        <AssociationConnector Association="pruebasModel.FK_ciudadcliente_ciudad" />
+        <AssociationConnector Association="pruebasModel.FK_ciudadcliente_cliente" />
+        <AssociationConnector Association="pruebasModel.FK_cliente_telefono_cliente" />
+        <AssociationConnector Association="pruebasModel.FK_cliente_telefono_telefono" />
+        <AssociationConnector Association="pruebasModel.catalogocliente" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
